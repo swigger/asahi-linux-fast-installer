@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: MIT
 import plistlib, subprocess, sys, logging
 from dataclasses import dataclass
+import os
 
 @dataclass
 class Partition:
@@ -84,8 +85,11 @@ class DiskUtil:
         self.get_apfs_list()
         self.get_disk_info()
 
-    def delete_part(self, target):
-        print(f"please run (diskutil eraseVolume free free {target}) manully if you know what you're doing.")
+    def delete_part(self, part):
+        os.system(f"diskutil eject {part.name}")
+        if part.info.get('APFSContainerReference', None):
+            os.system(f"diskutil apfs deleteContainer -force {part.name}")
+        os.system(f"diskutil eraseVolume free free {part.name}")
 
     def find_system_disk(self):
         logging.info(f"DiskUtil.find_system_disk()")

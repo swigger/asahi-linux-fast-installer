@@ -571,7 +571,7 @@ class InstallerMain:
         choices = {str(i): p.desc for i,p in enumerate(self.parts) if i>1}
         p_question("Choose an existing partition to resize:")
         idx = self.choice("Partition", choices)
-        self.dutil.delete_part(self.parts[int(idx)].name)
+        self.dutil.delete_part(self.parts[int(idx)])
         return True
 
     def action_resize(self, resizable):

@@ -40,4 +40,5 @@ if [ $(arch) != "arm64" ]; then
     exec arch -arm64 ./install.sh
 fi
 
+rm -fr fud_firmware/ || true
 exec python3 main.py "$@"
