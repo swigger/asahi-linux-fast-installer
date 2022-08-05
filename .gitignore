@@ -1,0 +1,5 @@
+*.log
+*.tar
+*.gz
+/fud_firmware/
+.DS_Store

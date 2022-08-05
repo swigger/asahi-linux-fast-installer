@@ -1,0 +1,83 @@
+{
+    "os_list": [
+        {
+            "name": "Asahi Linux Desktop",
+            "default_os_name": "Asahi Linux",
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "asahi-plasma-20220717-1.zip",
+            "supported_fw": ["12.3", "12.4"],
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "500MB",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "12GB",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
+            "name": "Asahi Linux Minimal (Arch Linux ARM)",
+            "default_os_name": "Asahi Linux",
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "asahi-base-20220717-1.zip",
+            "supported_fw": ["12.3", "12.4"],
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "500MB",
+                    "format": "fat",
+                    "volume_id": "0x2abf9f91",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "Root",
+                    "type": "Linux",
+                    "size": "5GB",
+                    "expand": true,
+                    "image": "root.img"
+                }
+            ]
+        },
+        {
+            "name": "UEFI environment only (m1n1 + U-Boot + ESP)",
+            "default_os_name": "UEFI boot",
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "uefi-only-20220717-1.zip",
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "500MB",
+                    "format": "fat",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                }
+            ]
+        },
+        {
+            "name": "Tethered boot (m1n1, for development)",
+            "default_os_name": "m1n1 proxy",
+            "expert": true,
+            "boot_object": "m1n1.bin",
+            "partitions": []
+        }
+    ]
+}
